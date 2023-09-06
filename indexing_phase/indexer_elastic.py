@@ -11,7 +11,7 @@ ELASTIC_ADDRESS = "https://3c816b713afd4cf08196bc3520542d99.us-central1.gcp.clou
 INDEX_NAME = "demo_index"
 # Uncomment the following lines if start ES with SECURITY ENABLED.
 #ELASTIC_ADDRESS = "https://localhost:9200"
-ELASTIC_PASSWORD = "CzCWVaNQfJbAYEJyyFaoX9Oe"
+ELASTIC_PASSWORD = ""
 CA_CERTS_PATH = "/Users/krishnan/ai-demos/vector-search-elastic-tutorial/A2525B64D8BFD084D946539261844AC9A3F7DBDC.crt"
 
 def index_documents(documents_filename, embedding_filename_first_field, embedding_filename_second_field, index_name, client):
