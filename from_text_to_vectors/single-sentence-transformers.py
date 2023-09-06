@@ -1,7 +1,7 @@
 from sentence_transformers import SentenceTransformer
 
 # The sentence we like to encode
-sentences = ["what is a bank transit number"]
+sentences = ["what is Gagnam"]
 
 # Load or create a SentenceTransformer model.
 # Replace the model name with 'sentence-transformers/msmarco-distilbert-base-dot-prod-v3' to map the query to

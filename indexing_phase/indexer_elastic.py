@@ -7,12 +7,12 @@ from elasticsearch.helpers import bulk
 BATCH_SIZE = 1000
 
 # Elastic configuration.
-ELASTIC_ADDRESS = "http://localhost:9200"
-INDEX_NAME = "neural_index"
+ELASTIC_ADDRESS = "https://3c816b713afd4cf08196bc3520542d99.us-central1.gcp.cloud.es.io:443"
+INDEX_NAME = "demo_index"
 # Uncomment the following lines if start ES with SECURITY ENABLED.
 #ELASTIC_ADDRESS = "https://localhost:9200"
-#ELASTIC_PASSWORD = "<your-password>"
-#CA_CERTS_PATH = "path/to/http_ca.crt"
+ELASTIC_PASSWORD = "CzCWVaNQfJbAYEJyyFaoX9Oe"
+CA_CERTS_PATH = "/Users/krishnan/ai-demos/vector-search-elastic-tutorial/A2525B64D8BFD084D946539261844AC9A3F7DBDC.crt"
 
 def index_documents(documents_filename, embedding_filename_first_field, embedding_filename_second_field, index_name, client):
     # Open the file containing text.
@@ -56,9 +56,9 @@ def main():
     embedding_filename_768 = sys.argv[3]
 
     # Declare a client instance of the Python Elasticsearch library.
-    client = Elasticsearch(hosts=[ELASTIC_ADDRESS])
+    #client = Elasticsearch(hosts=[ELASTIC_ADDRESS])
     # Use this instead, IF using SECURITY ENABLED.
-    # client = Elasticsearch(hosts=[ELASTIC_ADDRESS], ca_certs=CA_CERTS_PATH, basic_auth=("elastic", ELASTIC_PASSWORD))
+    client = Elasticsearch(hosts=[ELASTIC_ADDRESS], ca_certs=CA_CERTS_PATH, basic_auth=("elastic", ELASTIC_PASSWORD))
 
     initial_time = time.time()
     index_documents(document_filename, embedding_filename_384, embedding_filename_768, INDEX_NAME, client)

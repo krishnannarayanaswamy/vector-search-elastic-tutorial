@@ -37,5 +37,6 @@ if __name__ == "__main__":
         output_filename = sys.argv[2]
         sys.stdout = open(output_filename, "w")
         create_body(input_filename)
+        
 
     sys.stdout.close()

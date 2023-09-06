@@ -7,7 +7,7 @@ from elasticsearch.helpers import bulk
 BATCH_SIZE = 1000
 
 # Elastic configuration.
-ELASTIC_ADDRESS = "http://localhost:9200"
+ELASTIC_ADDRESS = "https://3c816b713afd4cf08196bc3520542d99.us-central1.gcp.cloud.es.io"
 INDEX_NAME = "neural_index"
 PIPELINE_NAME = "text-embeddings"
 

@@ -4,11 +4,11 @@ from eland.ml.pytorch import PyTorchModel
 from eland.ml.pytorch.transformers import TransformerModel
 
 # Elastic configuration.
-ELASTIC_ADDRESS = "http://localhost:9200"
+ELASTIC_ADDRESS = "https://3c816b713afd4cf08196bc3520542d99.us-central1.gcp.cloud.es.io:443"
 # Uncomment the following lines if start ES with SECURITY ENABLED.
 #ELASTIC_ADDRESS = "https://localhost:9200"
-#ELASTIC_PASSWORD = "<your-password>"
-#CA_CERTS_PATH = "path/to/http_ca.crt"
+ELASTIC_PASSWORD = "CzCWVaNQfJbAYEJyyFaoX9Oe"
+CA_CERTS_PATH = "/Users/krishnan/ai-demos/vector-search-elastic-tutorial/A2525B64D8BFD084D946539261844AC9A3F7DBDC.crt"
 
 def main():
         # Load a Hugging Face transformers model directly from the model hub
@@ -20,9 +20,10 @@ def main():
         model_path, config, vocab_path = tm.save(tmp_path)
 
         # Import model into Elasticsearch
-        client = elasticsearch.Elasticsearch(hosts=[ELASTIC_ADDRESS])
+        #client = elasticsearch.Elasticsearch(hosts=[ELASTIC_ADDRESS])
         # Use this instead, IF using SECURITY ENABLED.
-        # client = Elasticsearch(hosts=[ELASTIC_ADDRESS], ca_certs=CA_CERTS_PATH, basic_auth=("elastic", ELASTIC_PASSWORD))
+        
+        client = elasticsearch.Elasticsearch(hosts=[ELASTIC_ADDRESS], ca_certs=CA_CERTS_PATH, basic_auth=("elastic", ELASTIC_PASSWORD))
 
         ptm = PyTorchModel(client, tm.elasticsearch_model_id())
         ptm.import_model(model_path=model_path, config_path=None, vocab_path=vocab_path, config=config)
